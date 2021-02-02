@@ -2,9 +2,16 @@ import { Connection, createConnection } from 'typeorm'
 import * as logger from 'winston';
 import { Handler, NextFunction, Request, Response } from 'express';
 import { databaseConfig } from '../configs/database.config';
+import { databaseTestConfig } from '../configs/database-test.config';
 
 export function connectionMiddleware(): Handler {
-  const connectionPromise = createConnection(databaseConfig).then(async (connection: Connection) => {
+  let database;
+  if (process.env['NODE_ENV'] === 'test') {
+    database = databaseTestConfig;
+  } else {
+    database = databaseConfig;
+  }
+  const connectionPromise = createConnection(database).then(async (connection: Connection) => {
     if (!connection.isConnected) {
       return connection.connect();
     }
