@@ -16,6 +16,13 @@ Criar um arquivo `.env` e inserir as variaveis de ambiente:
 
 Rodar o comando `npm start` ou `npm run build && npm run start:prod`.
 
+## Rodar testes
+
+Para rodar os testes é necessário instalar o sqlite3:
+`npm i sqlite3 @types/sqlite3`
+
+Rodar o comando `npm test` ou `npm run test:cov`.
+
 ## Rodando com docker-compose
 
 Subindo:
