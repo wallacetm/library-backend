@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  db:
+    build: ./db
+    ports:
+      - "3306:3306"
+  desafio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_DATABASE: test
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_PASS: desafio
+      DB_USER: desafio
+    ports:
+      - "3000:3000"
+    links:
+      - db

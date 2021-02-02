@@ -1,0 +1,9 @@
+/node_modules
+/tests
+/docker-volumes
+.eslintrc.json
+.gitignore
+.prettierrc
+.env
+/.vscode
+/db
